@@ -35,21 +35,37 @@ window.onload = function () {
     function playVideo() {
       // Replace 'your_video_url.mp4' with the actual URL of your video
       var videoURL = 'video.mp4';
-  
+    
       // Create a full-screen video element dynamically
       var video = document.createElement('video');
-      video.src = videoURL;
-      video.autoplay = true;
-      video.controls = true;
-      video.style.position = 'fixed';
-      video.style.top = '0';
-      video.style.left = '0';
-      video.style.width = '100%';
-      video.style.height = '100%';
-  
-      // Append the video element to the body or a specific container
+      video.src = videoURL;  // Set the video source
+      video.autoplay = true;  // Enable autoplay
+      video.controls = true;  // Show video controls (like play, pause, etc.)
+      video.style.position = 'fixed';  // Fixed position
+      video.style.top = '0';  // Positioned at the top
+      video.style.left = '0';  // Positioned at the left
+      video.style.width = '100%';  // Take up 100% width of the screen
+      video.style.height = '100%';  // Take up 100% height of the screen
+    
+      // Append the video element to the body of the HTML document
       document.body.appendChild(video);
+    
+      // Play the video
+      video.play();
+    
+      // Request full-screen mode
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.mozRequestFullScreen) {
+        video.mozRequestFullScreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
     }
-  
-    init();
+
+// Initialize the function, perhaps by calling it when the page loads
+init();
+
   };
