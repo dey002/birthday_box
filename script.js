@@ -32,9 +32,12 @@ window.onload = function () {
       merrywrap.className = "merrywrap step-" + step;
     }
   
-     function playVideo() {
+    function playVideoInFullscreen() {
   // Replace 'your_video_url.mp4' with the actual URL of your video
   var videoURL = 'video.mp4';
+
+  // Open a new window
+  var videoWindow = window.open('', '_blank');
 
   // Create a full-screen video element dynamically
   var video = document.createElement('video');
@@ -42,13 +45,10 @@ window.onload = function () {
   video.autoplay = true;
   video.controls = true;
 
-  // Append the video element to the body
-  document.body.appendChild(video);
+  // Append the video element to the new window
+  videoWindow.document.body.appendChild(video);
 
-  // Play the video and set background to black
-  document.body.style.background = '#000';
-
-  // Play the video and enter fullscreen mode
+  // Play the video and enter fullscreen mode if supported
   video.play().then(() => {
     if (video.requestFullscreen) {
       video.requestFullscreen();
@@ -60,7 +60,5 @@ window.onload = function () {
   });
 }
 
-
-  
     init();
   };
