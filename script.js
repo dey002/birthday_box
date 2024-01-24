@@ -48,14 +48,18 @@ window.onload = function () {
   // Play the video and set background to black
   document.body.style.background = '#000';
 
-  // Play the video and rotate to fullscreen horizontally
+  // Play the video and enter fullscreen mode
   video.play().then(() => {
-    video.requestFullscreen().then(() => {
-      screen.orientation.lock('landscape');
-    });
+    if (video.requestFullscreen) {
+      video.requestFullscreen();
+    } else if (video.webkitRequestFullscreen) {
+      video.webkitRequestFullscreen();
+    } else if (video.mozRequestFullScreen) {
+      video.mozRequestFullScreen();
+    }
   });
 }
-  }
+
 
   
     init();
