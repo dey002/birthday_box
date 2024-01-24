@@ -2,8 +2,8 @@ window.onload = function () {
     var merrywrap = document.getElementById("merrywrap");
     var box = merrywrap.getElementsByClassName("giftbox")[0];
     var step = 1;
-    var stepMinutes = [2000, 2000, 000, 1000]; // Adjust the time for the video step
-    
+    var stepMinutes = [2000, 2000, 5000, 1000]; // Adjust the time for the video step
+  
     function init() {
       box.addEventListener("click", openBox, false);
     }
@@ -35,7 +35,7 @@ window.onload = function () {
     function playVideo() {
       // Replace 'your_video_url.mp4' with the actual URL of your video
       var videoURL = 'video.mp4';
-    
+  
       // Create a full-screen video element dynamically
       var video = document.createElement('video');
       video.src = videoURL;  // Set the video source
@@ -46,26 +46,21 @@ window.onload = function () {
       video.style.left = '0';  // Positioned at the left
       video.style.width = '100%';  // Take up 100% width of the screen
       video.style.height = '100%';  // Take up 100% height of the screen
-    
+  
       // Append the video element to the body of the HTML document
       document.body.appendChild(video);
-    
+  
       // Play the video
       video.play();
-    
-      // Request full-screen mode
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.mozRequestFullScreen) {
-        video.mozRequestFullScreen();
-      } else if (video.webkitRequestFullscreen) {
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
-      }
+  
+      // Request full-screen mode after user interaction
+      video.addEventListener('loadedmetadata', function () {
+        video.requestFullscreen().catch(function (err) {
+          console.error('Error attempting to enable fullscreen:', err.message);
+        });
+      });
     }
-
-// Initialize the function, perhaps by calling it when the page loads
-init();
-
+  
+    init();
   };
+  
