@@ -32,33 +32,24 @@ window.onload = function () {
       merrywrap.className = "merrywrap step-" + step;
     }
   
-    function playVideoInFullscreen() {
-  // Replace 'your_video_url.mp4' with the actual URL of your video
-  var videoURL = 'video.mp4';
-
-  // Open a new window
-  var videoWindow = window.open('', '_blank');
-
-  // Create a full-screen video element dynamically
-  var video = document.createElement('video');
-  video.src = videoURL;
-  video.autoplay = true;
-  video.controls = true;
-
-  // Append the video element to the new window
-  videoWindow.document.body.appendChild(video);
-
-  // Play the video and enter fullscreen mode if supported
-  video.play().then(() => {
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-    } else if (video.webkitRequestFullscreen) {
-      video.webkitRequestFullscreen();
-    } else if (video.mozRequestFullScreen) {
-      video.mozRequestFullScreen();
+    function playVideo() {
+      // Replace 'your_video_url.mp4' with the actual URL of your video
+      var videoURL = 'video.mp4';
+  
+      // Create a full-screen video element dynamically
+      var video = document.createElement('video');
+      video.src = videoURL;
+      video.autoplay = true;
+      video.controls = true;
+      video.style.position = 'fixed';
+      video.style.top = '0';
+      video.style.left = '0';
+      video.style.width = '200%';
+      video.style.height = '200%';
+  
+      // Append the video element to the body or a specific container
+      document.body.appendChild(video);
     }
-  });
-}
-
+  
     init();
   };
