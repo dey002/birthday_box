@@ -34,7 +34,7 @@ window.onload = function () {
   
     function playVideo() {
       // Replace 'your_video_url.mp4' with the actual URL of your video
-      var videoURL = 'https://drive.google.com/file/d/1lUjWz7PNsXVpz9F0TIMWxtnagL6bnrqq/view?usp=drive_link';
+      var videoURL = 'video.mp4';
   
       // Create a full-screen video element dynamically
       var video = document.createElement('video');
