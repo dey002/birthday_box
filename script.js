@@ -44,8 +44,8 @@ window.onload = function () {
       video.style.position = 'fixed';
       video.style.top = '0';
       video.style.left = '0';
-      video.style.width = '200%';
-      video.style.height = '200%';
+      video.style.width = '100%';
+      video.style.height = '100%';
   
       // Append the video element to the body or a specific container
       document.body.appendChild(video);
