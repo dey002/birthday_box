@@ -33,22 +33,28 @@ window.onload = function () {
     }
   
      function playVideo() {
-    // Replace 'your_video_url.mp4' with the actual URL of your video
-    var videoURL = 'video.mp4';
+  // Replace 'your_video_url.mp4' with the actual URL of your video
+  var videoURL = 'video.mp4';
 
-    // Create a full-screen video element dynamically
-    var video = document.createElement('video');
-    video.src = videoURL;
-    video.autoplay = true;
-    video.controls = true;
+  // Create a full-screen video element dynamically
+  var video = document.createElement('video');
+  video.src = videoURL;
+  video.autoplay = true;
+  video.controls = true;
 
-    // Append the video element to the body
-    document.body.appendChild(video);
+  // Append the video element to the body
+  document.body.appendChild(video);
 
-    // Play the video and request fullscreen
-    video.play().then(() => {
-      video.requestFullscreen();
+  // Play the video and set background to black
+  document.body.style.background = '#000';
+
+  // Play the video and rotate to fullscreen horizontally
+  video.play().then(() => {
+    video.requestFullscreen().then(() => {
+      screen.orientation.lock('landscape');
     });
+  });
+}
   }
 
   
